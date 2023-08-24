@@ -8,3 +8,6 @@
 
 # DEPENDENCIES
 Look under `[packages]` in `Pipfile`
+
+# NOTE
+Put the API key into `gen/key.txt`. Do not commit it!

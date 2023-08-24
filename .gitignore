@@ -1,4 +1,4 @@
-# Excludes cache and apikey
+# Excludes cache and API key
 __pycache__
-/gen/key.txt
 Pipfile.lock
+key.txt
