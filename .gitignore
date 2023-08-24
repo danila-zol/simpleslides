@@ -1,0 +1,4 @@
+# Excludes cache and apikey
+__pycache__
+/gen/key.txt
+Pipfile.lock
