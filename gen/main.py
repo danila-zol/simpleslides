@@ -1,7 +1,5 @@
 import openai
 
-<<<<<<< HEAD
-=======
 sample_input = { 'company_name' : 'SimpleCoffe',
                 'business_type' : 'A coffeeshop', 
                 'target market': 'Saint-Petersburg, Russia',
@@ -37,7 +35,6 @@ def get_txt_input(dict_):
 print(get_txt_input(sample_input))
 
 
->>>>>>> 6d75458 (Sample input)
 with open("gen/key.txt") as f:
   openai.api_key = f.read()
 
