@@ -3,7 +3,6 @@ API requires key
 Server <-- Client 
 ```
 {
-    
     'company_name' : 'SimpleCoffe',
     'business_type' : 'A coffeeshop', 
     'target market': 'Saint-Petersburg, Russia',
