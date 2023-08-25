@@ -1,0 +1,17 @@
+Create a pitch deck for a business project using the data provided in the end of the question.
+The pitch deck must include the following points:
+1. The problem that the specified business project is going to solve.
+    - description
+    - why it matters
+    - relevance of the problem
+2. The state of the market of the good or service which the specified business project provides.
+    - the market size
+    - the size of the target market
+    - why the specified business project is the best solution
+3. The illustration of a business model (described in the end of the question)
+    - how will you make money
+4. The traction of a business model
+    - the impact
+    - why people would want to buy your good/service
+    - which companies have already adopted this business strategy (example)
+
