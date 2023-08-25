@@ -11,7 +11,7 @@
     1. Name
     2. Specialization
 6. What the project already achieved
-7. Company information
+7. Contact information
 
 # Response object
 1. Emotion of the object
