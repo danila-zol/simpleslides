@@ -2,3 +2,5 @@
 __pycache__
 Pipfile.lock
 key.txt
+config.json
+user_content/*
