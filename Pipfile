@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 requests = "*"
 openai = "*"
+translate-json = "*"
+pptx = "*"
 
 [dev-packages]
 
