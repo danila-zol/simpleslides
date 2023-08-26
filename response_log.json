@@ -1,0 +1,79 @@
+{
+  "slides": [
+    {
+      "title": "Problem Statement",
+      "content": {
+        "description": "The absence of a well-stocked and customer-centric skateboard shop in Saint-Petersburg is a prevalent issue among skateboarders and sports enthusiasts.",
+        "why_matters": "Skateboarders require access to quality skateboarding gear, equipment, and apparel to pursue their passion and improve their skills.",
+        "relevance": "This problem is highly relevant as the skateboarding community in Saint-Petersburg is growing rapidly, creating a demand for a dedicated skateboard shop."
+      }
+    },
+    {
+      "title": "Market Overview",
+      "content": {
+        "market_size": "The skateboarding market in Saint-Petersburg holds substantial value due to the city's vibrant skateboarding culture and the increasing popularity of skateboarding as a sport.",
+        "target_market_size": "We are targeting skateboarders and sports enthusiasts aged 18 to 35 in Saint-Petersburg, Russia.",
+        "why_solution": "Skvot stands out as the optimal solution, providing a wide range of high-quality skateboarding products and a knowledgeable team to meet the specific needs of skateboarders."
+      }
+    },
+    {
+      "title": "Business Model",
+      "content": {
+        "revenue_streams": "Our primary revenue source is the sales of skateboarding gear, equipment, and apparel. We also plan to offer skateboard maintenance and customization services.",
+        "pricing_strategy": "We implement a competitive pricing strategy based on our commitment to providing high-quality products at affordable prices.",
+        "profit_mechanism": "Skvot's exceptional customer service and dedication to the skateboarding community ensure customer loyalty and repeat business."
+      }
+    },
+    {
+      "title": "Traction and Impact",
+      "content": {
+        "traction": "With monthly profits of 25,000 rubles and a consistent monthly footfall of 30,000 visitors, our success is evident.",
+        "impact": "Through providing skateboarders with the necessary gear and accessories, we are enabling them to pursue their passion and improve their skills, contributing to the growth of the local skateboarding scene."
+      }
+    },
+    {
+      "title": "Customer Value",
+      "content": {
+        "unique_value": "Our unique value proposition lies in our extensive selection of high-quality skateboard products and our knowledgeable team who can provide personalized recommendations.",
+        "why_choose_us": "Skvot is the go-to destination for skateboarders in Saint-Petersburg due to our commitment to quality, customer service, and understanding of the skateboarding culture."
+      }
+    },
+    {
+      "title": "Business Team",
+      "content": {
+        "team": [
+          { "name": "Daria Ivanova", "expertise": "Cash Register" },
+          { "name": "Dmitry Petrov", "expertise": "Accountant" }
+        ]
+      }
+    },
+    {
+      "title": "Market Expansion Strategy",
+      "content": {
+        "target_audience": "Our focus encompasses skateboarders and sports enthusiasts aged 18 to 35 within Saint-Petersburg, Russia.",
+        "expansion_vision": "Beyond Saint-Petersburg, we envision expanding to other cities in Russia to cater to the growing demand for high-quality skateboard products and services."
+      }
+    },
+    {
+      "title": "Investment Opportunity",
+      "content": {
+        "investment_goal": "Our investment target is 10 million rubles.",
+        "utilization_plan": "These funds will be allocated towards acquiring new equipment, enhancing our product offering, and implementing marketing strategies to double our revenue within a year.",
+        "returns_commitment": "We are committed to providing investors with a twofold return on their investment within a 12-month timeframe."
+      }
+    },
+    {
+      "title": "Contact Information",
+      "content": {
+        "contact_details": "For inquiries and partnership opportunities, connect with us directly at 123456789."
+      }
+    },
+    {
+      "title": "Thank You",
+      "content": {
+        "gratitude": "We extend our gratitude for considering Skvot's transformative venture.",
+        "skateboarding_revolution": "Join us in empowering skateboarders and shaping the skateboarding culture in Saint-Petersburg and beyond."
+      }
+    }
+  ]
+}

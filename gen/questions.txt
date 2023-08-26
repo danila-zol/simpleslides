@@ -1,0 +1,102 @@
+Create a pitch deck for a business project using the data provided in the end of the question.
+The pitch deck must include the following points:
+1. The problem that the specified business project is going to solve.
+    - description
+    - why it matters
+    - relevance of the problem
+2. The state of the market of the good or service which the specified business project provides.
+    - the market size
+    - the size of the target market
+    - why the specified business project is the best solution
+3. The illustration of a business model (described in the end of the question)
+    - how will you make money
+4. The traction of a business model
+    - the impact
+    - why people would want to buy your good/service
+    - which companies have already adopted this business strategy (example)
+Generate 200 words text. Return a .json file, structure it like in the following example:
+{
+  "slides": [
+    {
+      "title": "Problem Statement",
+      "content": {
+        "description": "The absence of a consistently high-quality coffee experience in Saint-Petersburg is a prevalent issue.",
+        "why_matters": "Coffee enthusiasts are longing for a destination that offers exceptional taste and a warm ambiance to foster a sense of community.",
+        "relevance": "This problem is highly relevant as the demand for premium coffee experiences is rapidly increasing."
+      }
+    },
+    {
+      "title": "Market Overview",
+      "content": {
+        "market_size": "The coffee market in Saint-Petersburg holds substantial value due to the city's vibrant coffee culture.",
+        "target_market_size": "We are targeting all genders, ages, and coffee enthusiasts within Saint-Petersburg.",
+        "why_solution": "SimpleCoffe stands out as the optimal solution, crafting exceptional coffee in a cozy setting to meet this demand."
+      }
+    },
+    {
+      "title": "Business Model",
+      "content": {
+        "revenue_streams": "Our primary revenue source is coffee sales, supplemented by profits from snacks and merchandise.",
+        "pricing_strategy": "We implement competitive pricing based on our commitment to delivering premium quality.",
+        "profit_mechanism": "SimpleCoffe's inviting atmosphere and outstanding brews ensure customer loyalty and repeat business."
+      }
+    },
+    {
+      "title": "Traction and Impact",
+      "content": {
+        "traction": "With monthly profits of 25,000 rubles and a consistent monthly footfall of 30,000 visitors, our success is evident.",
+        "impact": "Through redefining coffee enjoyment, we are reshaping people's perception and appreciation of coffee."
+      }
+    },
+    {
+      "title": "Customer Value",
+      "content": {
+        "unique_value": "Our unique value proposition lies in our commitment to brewing perfection, ensuring an exceptional coffee experience.",
+        "why_choose_us": "The blend of exceptional taste and a welcoming atmosphere sets SimpleCoffe apart from competitors."
+      }
+    },
+    {
+      "title": "Business Team",
+      "content": {
+        "team": [
+          { "name": "Daria Ivanova", "expertise": "Barista" },
+          { "name": "Dmitry Petrov", "expertise": "Accountant" }
+        ]
+      }
+    },
+    {
+      "title": "Market Expansion Strategy",
+      "content": {
+        "target_audience": "Our focus encompasses all ages and genders of coffee enthusiasts within Saint-Petersburg.",
+        "expansion_vision": "Beyond Saint-Petersburg, we envision expanding to other cities to capitalize on our success."
+      }
+    },
+    {
+      "title": "Investment Opportunity",
+      "content": {
+        "investment_goal": "Our investment target is 10 million rubles.",
+        "utilization_plan": "These funds will be allocated towards acquiring advanced equipment, enhancing product quality, and doubling our revenue within a year.",
+        "returns_commitment": "We are committed to providing investors with a twofold return on their investment within a 12-month timeframe."
+      }
+    },
+    {
+      "title": "Contact Information",
+      "content": {
+        "contact_details": "For inquiries and partnership opportunities, contact us directly at 123456789."
+      }
+    },
+    {
+      "title": "Thank You",
+      "content": {
+        "gratitude": "We extend our gratitude for considering SimpleCoffe's transformative venture.",
+        "coffee_revolution": "Join us in elevating the coffee experience in Saint-Petersburg and beyond."
+      }
+    }
+  ]
+}
+
+
+
+
+
+
