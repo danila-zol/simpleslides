@@ -5,8 +5,8 @@ API requires key supplied in Authorization HTTP header
 ```
 {
     'mtype' : 'initialization',
-    'userid' : ''
-    'user_info' {
+    'userid' : '',
+    'user_info' : {
         'company_name' : 'SimpleCoffe',
         'business_type' : 'A coffeeshop', 
         'target market': 'Saint-Petersburg, Russia',
@@ -25,7 +25,7 @@ Response Server --> Client
 {
     'mtype' : 'ginfo',
     'status' : 'success|error'
-    'result' : {
+    'result' : [
         {
             'type' : 'pdf',
             'link' : $MY_LINK.pdf
@@ -35,7 +35,7 @@ Response Server --> Client
             'link' : $MY_LINK.json
         }
         итд
-    }
+    ]
 }
 ```
 

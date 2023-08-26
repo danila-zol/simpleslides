@@ -1,6 +1,4 @@
-from jsonschema import validate
-
-schema = {
+userinit_schema = {
     "$schema" : "http://json-schema.org/draft-04/schema#",
     "title" : "User Input",
     "description" : "A user request json",
@@ -16,9 +14,3 @@ schema = {
         }
     }
 }
-
-sample = {
-    'mtype' : 'initialization',
-    'userid' : 'danila'}
-
-validate(instance=sample, schema=schema)
