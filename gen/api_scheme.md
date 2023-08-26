@@ -1,6 +1,7 @@
-API requires key
+## Note
+API requires key supplied in Authorization HTTP header
 
-Server <-- Client 
+## Server <-- Client 
 ```
 {
     'mtype' : 'initialization',
@@ -36,8 +37,10 @@ Response Server --> Client
         итд
     }
 }
+```
 
-Response back Client --> Server
+## Response back Server <-- Client
+```
 {
     'mtype' : 'close'
     'status' : 'success|error'
