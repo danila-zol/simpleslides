@@ -1,6 +1,7 @@
-API requires key
+## Note
+API requires key supplied in Authorization HTTP header
 
-Server <-- Client 
+## Server <-- Client 
 ```
 {
     'company_name' : 'SimpleCoffe',
@@ -14,9 +15,11 @@ Server <-- Client
     'investment amount': '10 million rubles', 
     'deadline on investment promises': '1 year',
     'length(symbols)': '200'
-} 
+}
+```
 
-Response Server --> Client
+## Response Server --> Client
+```
 { 
     'status' : 'success'|'fail'
     'result' : {
@@ -31,8 +34,10 @@ Response Server --> Client
         итд
     }
 }
+```
 
-Response back Client --> Server
+## Response back Server <-- Client
+```
 {
     'status' : 'close'
 }
