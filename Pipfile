@@ -8,6 +8,7 @@ requests = "*"
 openai = "*"
 flask = "*"
 jsonschema = "*"
+python-pptx = "*"
 
 [dev-packages]
 

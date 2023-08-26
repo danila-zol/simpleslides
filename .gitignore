@@ -3,4 +3,6 @@ __pycache__
 Pipfile.lock
 key.txt
 config.json
-user_content/*
+gen/user_content/*
+goslate.py
+response_log.json

@@ -109,6 +109,8 @@ def get_txt_input(dict_):
       final_str += f'{key}: {compress_dict(data)}\n'
     else:
       final_str += f'{key}: {data}\n'
+
+  print(f'user_data{final_str}')
   return final_str
 
 #print(get_txt_input(sample_input_rus))
@@ -130,8 +132,8 @@ def get_txt_input(dict_):
 
 import json
 
-def get_json():
-  
+def get_json(user_info):
+  print('user info accepted.')
   with open("gen/key.txt") as f:
     openai.api_key = f.read()
 
@@ -142,7 +144,7 @@ def get_json():
     model = "gpt-3.5-turbo", 
     messages=[
       {"role": "system", "content": "You are a helpful assistant."},
-      {"role": "user", "content": f"{question}\n {get_txt_input(formated_input())}"}
+      {"role": "user", "content": f"{question}\n {get_txt_input(user_info)}"}
       ]
   )
 
@@ -185,9 +187,11 @@ a, b = ("THIS IS A TEST", "this is a test")
 prs = Presentation()
 slide_layout = prs.slide_layouts[6]
 
-def get_title_slides():
+def get_title_slides(user_info):
   global prs, slide_layout
-  response = get_json()
+  print(f'user info: {user_info}')
+  response = get_json(user_info)
+  print(f'api response: {response}')
   for element in response["slides"]:
     title_text = element["title"]
     discr = get_txt_input(element["content"])
@@ -242,9 +246,8 @@ def get_title_slides():
   
 
  
-  prs.save('gen/test.pptx')
+  return prs 
 
-get_title_slides()
 
 
 

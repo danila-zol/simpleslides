@@ -3,76 +3,75 @@
     {
       "title": "Problem Statement",
       "content": {
-        "description": "There is a lack of high-quality coffee options in Saint-Petersburg, resulting in a gap in the market for exceptional coffee experiences.",
-        "why_matters": "Coffee enthusiasts are seeking a coffee destination that offers superior taste and a welcoming environment to foster a sense of community.",
-        "relevance": "This problem is highly relevant as the demand for premium coffee experiences is growing rapidly."
+        "description": "The absence of a consistently high-quality and easily accessible pitch deck generator in Russia is a prevalent issue.",
+        "why_matters": "Entrepreneurs and business professionals are in need of a streamlined platform to create visually appealing and persuasive pitch decks.",
+        "relevance": "This problem is highly relevant as the demand for professional pitch decks is rapidly increasing in Russia's growing startup ecosystem."
       }
     },
     {
       "title": "Market Overview",
       "content": {
-        "market_size": "The coffee market in Saint-Petersburg holds substantial value due to the city's vibrant coffee culture.",
-        "target_market_size": "Our target market includes all genders, ages, and coffee enthusiasts in Saint-Petersburg.",
-        "why_solution": "ProstoKofe is the optimal solution, offering exceptional coffee in a cozy setting to meet the increasing demand."
+        "market_size": "The market for pitch deck generation in Russia holds substantial value as more startups and businesses are seeking funding.",
+        "target_market_size": "UPitch is targeting all genders, ages, and business professionals looking to create impressive pitch decks in Russia.",
+        "why_solution": "UPitch stands out as the optimal solution, providing an easy-to-use online platform that offers professional templates and customization options."
       }
     },
     {
       "title": "Business Model",
       "content": {
-        "revenue_streams": "Our primary revenue source is coffee sales, complemented by profits from snacks and merchandise.",
-        "pricing_strategy": "We implement competitive pricing based on our commitment to delivering premium quality.",
-        "profit_mechanism": "ProstoKofe's excellent brews and inviting atmosphere ensure customer loyalty and repeat business."
+        "revenue_streams": "Our primary revenue source is through subscription plans that offer premium features and access to exclusive templates.",
+        "pricing_strategy": "We implement competitive pricing based on our commitment to delivering high-quality pitch decks that cater to different business needs.",
+        "profit_mechanism": "UPitch's user-friendly interface and extensive library of design elements ensure customer satisfaction and encourage repeat usage."
       }
     },
     {
       "title": "Traction and Impact",
       "content": {
-        "traction": "With a yearly revenue of 10 rubles and consistent customer footfall, our success is evident.",
-        "impact": "Through our commitment to exceptional coffee, we are reshaping people's perception and appreciation of coffee."
+        "traction": "With the successful launch of our Minimum Viable Product (MVP), we have gained positive user feedback and acquired over 500 active users within a month.",
+        "impact": "By providing a reliable and efficient platform for creating professional pitch decks, UPitch is empowering entrepreneurs and startups to effectively communicate their ideas and secure funding."
       }
     },
     {
       "title": "Customer Value",
       "content": {
-        "unique_value": "Our unique value proposition lies in our dedication to brewing perfection, guaranteeing an extraordinary coffee experience.",
-        "why_choose_us": "ProstoKofe stands out from competitors due to the combination of exceptional taste and a welcoming atmosphere."
+        "unique_value": "Our unique value proposition lies in the simplicity and versatility of our platform, allowing users to create visually stunning pitch decks without any design experience.",
+        "why_choose_us": "The combination of user-friendly interface, customizable templates, and affordable pricing sets UPitch apart from other pitch deck generators in the market."
       }
     },
     {
       "title": "Business Team",
       "content": {
         "team": [
-          { "name": "Danila Zolotarev", "expertise": "Full stack developer" },
-          { "name": "Rohh", "expertise": "Avid coffee drinker" }
+          { "name": "Andrei Sherbenok", "expertise": "Business" }
         ]
       }
     },
     {
       "title": "Market Expansion Strategy",
       "content": {
-        "target_audience": "Our target audience includes all ages and genders of coffee enthusiasts within Saint-Petersburg.",
-        "expansion_vision": "In addition to expanding within Saint-Petersburg, we aim to open two more coffee shops in other cities."
+        "target_audience": "Our focus encompasses all ages, genders, and business professionals within Russia who are in need of impressive pitch decks.",
+        "expansion_vision": "Beyond Russia, we envision expanding to other countries with emerging startup ecosystems to provide them with a reliable pitch deck generation solution."
       }
     },
     {
       "title": "Investment Opportunity",
       "content": {
-        "investment_goal": "Our investment target is 20 rubles to open two more coffee shops.",
-        "utilization_plan": "These funds will be allocated towards acquiring equipment, enhancing product quality, and expanding our revenue within one year.",
-        "returns_commitment": "We promise to provide investors with a twofold return on their investment within a one-year timeframe."
+        "investment_goal": "Our investment target is $1000 to scale up our platform's capabilities and marketing efforts.",
+        "utilization_plan": "These funds will be allocated towards enhancing our platform's features, expanding our template library, and increasing user acquisition.",
+        "returns_commitment": "We are committed to providing investors with a twofold return on their investment within a 12-month timeframe."
       }
     },
     {
       "title": "Contact Information",
       "content": {
-        "contact_details": "For inquiries and partnership opportunities, please contact Nikita - The worst python dev on ITMO Hakathon at 89112800812."
+        "contact_details": "For inquiries and investment opportunities, please contact Andrei Sherbenok at +79313439137 or email us at info@upitch.com."
       }
     },
     {
       "title": "Thank You",
       "content": {
-        "gratitude": "We extend our gratitude for considering ProstoKofe's venture.",
-        "coffee_revolution": "Join us in elevating the coffee experience in Saint-Petersburg and beyond."
+        "gratitude": "We extend our gratitude for considering UPitch's innovative venture.",
+        "pitch_success": "Join us in revolutionizing the pitch deck creation process and empowering entrepreneurs in Russia and beyond."
       }
     }
   ]
