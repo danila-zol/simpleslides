@@ -1,4 +1,4 @@
-import gen.main
+import gen.processing
 import telegram
 import gui
 
