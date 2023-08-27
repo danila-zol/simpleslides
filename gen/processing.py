@@ -180,7 +180,9 @@ import collections
 import collections.abc
 from pptx import Presentation
 from pptx.enum.text import PP_ALIGN
+from pptx.enum.text import MSO_ANCHOR
 from pptx.util import Inches, Pt
+from pptx.enum.text import MSO_AUTO_SIZE
 import requests
 
 def translate_text(text):
@@ -229,7 +231,7 @@ def get_title_slides(user_info):
     for symbol in discr:
       if count == 0 and symbol == ' ':
         symbol = ''   
-      if count >= 50 or symbol == ':':
+      if count >= 42 or symbol == ':':
         temp += symbol
         if (symbol in [' ', ':']):
           string += f'{temp}\n'
@@ -263,15 +265,20 @@ def get_title_slides(user_info):
       size1 = 50
 
 
+    prs.slide_height = Inches(9)    
+    prs.slide_width = Inches(16)      
     slide = prs.slides.add_slide(slide_layout)
     
-    left = Inches(5.5)
-    top = Inches(0.1)
-    width = Inches(prs.slide_width * 0.8)
-    height = Inches(prs.slide_width * 0.8)
-    txBox = slide.shapes.add_textbox(left, top, 0, 0)
+
+    # width = Inches(prs.slide_width * 0.8)
+    # height = Inches(prs.slide_height * 0.8)
+    left = Inches(1) 
+    top = Inches(1)
+    txBox = slide.shapes.add_textbox(left, top, prs.slide_width, prs.slide_height)
     txBox.word_wrap = True
     title_box = txBox.text_frame
+    title_box.auto_size = MSO_AUTO_SIZE.TEXT_TO_FIT_SHAPE
+    title_box.vertical_anchor = MSO_ANCHOR.TOP
     title_par = title_box.add_paragraph()
     title_par.word_wrap = True
     title_par.alignment = PP_ALIGN.LEFT
