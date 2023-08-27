@@ -193,15 +193,34 @@ def translate_text(text):
 
 prs = Presentation()
 slide_layout = prs.slide_layouts[6]
+slide_layout2 = prs.slide_layouts[2]
 
 def get_title_slides(user_info):
+  
   global prs, slide_layout
-  #print(f'user info: {user_info}')
-  #response = get_json(user_info)
-  #print(f'api response: {response}')
 
-  with open("response_log.json") as f:
-    response = json.loads(f.read())
+  print(f'user info: {user_info}')
+  response = get_json(user_info)
+  print(f'api response: {response}')
+
+  #with open("response_log.json") as f:
+  # response = json.loads(f.read())
+
+  #title slide
+
+  first_slide_title = user_info["company_name"]
+
+  prs.slide_height = Inches(9)    
+  prs.slide_width = Inches(16)      
+  first_slide = prs.slides.add_slide(slide_layout2)
+  company_name = first_slide.shapes.title
+  pitch_lable = first_slide.placeholders[1]
+
+  company_name.text = first_slide_title
+  pitch_lable.text = "pitch deck 2023"
+
+  
+  #presentation body
   
   for element in response["slides"]:
     title_text = translate_text(element["title"])
@@ -292,13 +311,10 @@ def get_title_slides(user_info):
     discr_par.text = discr
     discr_par.font.size = Pt(20) 
 
-  
-  
 
- 
   return prs 
 
-prs = get_title_slides('')
+prs = get_title_slides(sample_input)
 prs.save('gen/test2.pptx')
 
 
