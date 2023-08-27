@@ -42,14 +42,8 @@
       "title": "Business Team",
       "content": {
         "team": [
-          {
-            "name": "Daria Ivanova",
-            "expertise": "Barista"
-          },
-          {
-            "name": "Dmitry Petrov",
-            "expertise": "Accountant"
-          }
+          { "name": "Daria Ivanova", "expertise": "Barista" },
+          { "name": "Dmitry Petrov", "expertise": "Accountant" }
         ]
       }
     },

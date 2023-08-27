@@ -1,8 +1,6 @@
 import openai
 
 
-
-
 # user input
 
 def get_input():
@@ -235,11 +233,6 @@ def get_title_slides(user_info):
         for dic in element:
           temp_str += f"{translate_text(': '.join(dic.values()))}\n"
         translated.append(temp_str)
-        # for dic in element:
-        #   temp_str += compress_dict(dic)
-        #   if temp_str not in ['\n', ' ', ':', '.', ',']:
-        #     temp_list.append(translate_text(temp_str))
-        # translated.append(''.join(temp_list))
       elif element not in ['\n', ' ', ':', '.', ',']:
         translated.append(translate_text(element))
     discr = ''.join(translated)
