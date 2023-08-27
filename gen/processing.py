@@ -1,8 +1,6 @@
 import openai
 
 
-
-
 # user input
 
 def get_input():
@@ -180,28 +178,72 @@ import collections
 import collections.abc
 from pptx import Presentation
 from pptx.enum.text import PP_ALIGN
+from pptx.enum.text import MSO_ANCHOR
 from pptx.util import Inches, Pt
+from pptx.enum.text import MSO_AUTO_SIZE
+import requests
 
-a, b = ("THIS IS A TEST", "this is a test")
+def translate_text(text):
+    url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q={text}"
+    response = requests.get(url)
+    data = response.json()
+    return data[0][0][0] + "."
 
 prs = Presentation()
 slide_layout = prs.slide_layouts[6]
+slide_layout2 = prs.slide_layouts[2]
 
 def get_title_slides(user_info):
+  
   global prs, slide_layout
+
   print(f'user info: {user_info}')
   response = get_json(user_info)
   print(f'api response: {response}')
+
+  #with open("response_log.json") as f:
+  # response = json.loads(f.read())
+
+  #title slide
+
+  first_slide_title = user_info["company_name"]
+
+  prs.slide_height = Inches(9)    
+  prs.slide_width = Inches(16)      
+  first_slide = prs.slides.add_slide(slide_layout2)
+  company_name = first_slide.shapes.title
+  pitch_lable = first_slide.placeholders[1]
+
+  company_name.text = first_slide_title
+  pitch_lable.text = "pitch deck 2023"
+
+  
+  #presentation body
+  
   for element in response["slides"]:
-    title_text = element["title"]
-    discr = get_txt_input(element["content"])
+    title_text = translate_text(element["title"])
+    discr = element["content"].values()
+
+    #translation
+    translated = []
+    #print(discr)
+    for element in discr:
+      if type(element) == list:
+        temp_str = ''
+        for dic in element:
+          temp_str += f"{translate_text(': '.join(dic.values()))}\n"
+        translated.append(temp_str)
+      elif element not in ['\n', ' ', ':', '.', ',']:
+        translated.append(translate_text(element))
+    discr = ''.join(translated)
+    #print(discr)
     count = 0
     temp = ''
     string = ''
     for symbol in discr:
       if count == 0 and symbol == ' ':
         symbol = ''   
-      if count >= 50 or symbol == ':':
+      if count >= 42 or symbol == ':':
         temp += symbol
         if (symbol in [' ', ':']):
           string += f'{temp}\n'
@@ -214,22 +256,41 @@ def get_title_slides(user_info):
         count += 1
     string += temp
     
-    discr = string.replace('_', ' ').replace('.,', '.')
+    discr = string.replace('_', ' ').replace('.,', '.').replace('..', '. ')
+    
+    # split_list = discr.split(':')
+    # final_list = []
+    # for element in split_list:
+    #   element += ':'
+    #   final_list += element.split('.')
+    # translated = []
+    # for element in final_list:
+    #   if element not in ['\n', ' ', ':', '.', ',']:
+    #     translated.append(translate_text(element))
+    #     print(translated)
+
+    # discr = ''.join(translated).replace(':.', ': ').replace('.:', '').replace('.', '')
+
 
     size1 = 60
     if len(title_text) > 20:
-      size1 = 41
+      size1 = 50
 
 
+    prs.slide_height = Inches(9)    
+    prs.slide_width = Inches(16)      
     slide = prs.slides.add_slide(slide_layout)
     
-    left = Inches(5)
+
+    # width = Inches(prs.slide_width * 0.8)
+    # height = Inches(prs.slide_height * 0.8)
+    left = Inches(1) 
     top = Inches(1)
-    width = Inches(0.1)
-    height = Inches(0.1)
-    txBox = slide.shapes.add_textbox(left, top, 0, 0)
+    txBox = slide.shapes.add_textbox(left, top, prs.slide_width, prs.slide_height)
     txBox.word_wrap = True
     title_box = txBox.text_frame
+    title_box.auto_size = MSO_AUTO_SIZE.TEXT_TO_FIT_SHAPE
+    title_box.vertical_anchor = MSO_ANCHOR.TOP
     title_par = title_box.add_paragraph()
     title_par.word_wrap = True
     title_par.alignment = PP_ALIGN.LEFT
@@ -243,10 +304,11 @@ def get_title_slides(user_info):
     discr_par.text = discr
     discr_par.font.size = Pt(20) 
 
-  
 
- 
   return prs 
+
+prs = get_title_slides(sample_input)
+prs.save('gen/test2.pptx')
 
 
 
