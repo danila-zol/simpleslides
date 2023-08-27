@@ -181,20 +181,48 @@ import collections.abc
 from pptx import Presentation
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
+import requests
 
-a, b = ("THIS IS A TEST", "this is a test")
+def translate_text(text):
+    url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q={text}"
+    response = requests.get(url)
+    data = response.json()
+    return data[0][0][0] + "."
 
 prs = Presentation()
 slide_layout = prs.slide_layouts[6]
 
 def get_title_slides(user_info):
   global prs, slide_layout
-  print(f'user info: {user_info}')
-  response = get_json(user_info)
-  print(f'api response: {response}')
+  #print(f'user info: {user_info}')
+  #response = get_json(user_info)
+  #print(f'api response: {response}')
+
+  with open("response_log.json") as f:
+    response = json.loads(f.read())
+  
   for element in response["slides"]:
-    title_text = element["title"]
-    discr = get_txt_input(element["content"])
+    title_text = translate_text(element["title"])
+    discr = element["content"].values()
+
+    #translation
+    translated = []
+    #print(discr)
+    for element in discr:
+      if type(element) == list:
+        temp_str = ''
+        for dic in element:
+          temp_str += f"{translate_text(': '.join(dic.values()))}\n"
+        translated.append(temp_str)
+        # for dic in element:
+        #   temp_str += compress_dict(dic)
+        #   if temp_str not in ['\n', ' ', ':', '.', ',']:
+        #     temp_list.append(translate_text(temp_str))
+        # translated.append(''.join(temp_list))
+      elif element not in ['\n', ' ', ':', '.', ',']:
+        translated.append(translate_text(element))
+    discr = ''.join(translated)
+    #print(discr)
     count = 0
     temp = ''
     string = ''
@@ -214,19 +242,33 @@ def get_title_slides(user_info):
         count += 1
     string += temp
     
-    discr = string.replace('_', ' ').replace('.,', '.')
+    discr = string.replace('_', ' ').replace('.,', '.').replace('..', '. ')
+    
+    # split_list = discr.split(':')
+    # final_list = []
+    # for element in split_list:
+    #   element += ':'
+    #   final_list += element.split('.')
+    # translated = []
+    # for element in final_list:
+    #   if element not in ['\n', ' ', ':', '.', ',']:
+    #     translated.append(translate_text(element))
+    #     print(translated)
+
+    # discr = ''.join(translated).replace(':.', ': ').replace('.:', '').replace('.', '')
+
 
     size1 = 60
     if len(title_text) > 20:
-      size1 = 41
+      size1 = 50
 
 
     slide = prs.slides.add_slide(slide_layout)
     
-    left = Inches(5)
-    top = Inches(1)
-    width = Inches(0.1)
-    height = Inches(0.1)
+    left = Inches(5.5)
+    top = Inches(0.1)
+    width = Inches(prs.slide_width * 0.8)
+    height = Inches(prs.slide_width * 0.8)
     txBox = slide.shapes.add_textbox(left, top, 0, 0)
     txBox.word_wrap = True
     title_box = txBox.text_frame
@@ -244,9 +286,13 @@ def get_title_slides(user_info):
     discr_par.font.size = Pt(20) 
 
   
+  
 
  
   return prs 
+
+prs = get_title_slides('')
+prs.save('gen/test2.pptx')
 
 
 
