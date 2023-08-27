@@ -1,20 +1,23 @@
 from flask import Flask,  jsonify, request, send_file, render_template
+from flask_cors import CORS
 from auth import requires_auth, validator
 from pptx import Presentation
-from processing import get_title_slides
+from processing import get_md
 import json
 import uuid
 
 
+
 app = Flask('first_app')
+CORS(app)
 
 @app.route("/echo", methods=["GET", "POST"])
-#@requires_auth
+@requires_auth
 def echo():
      return request.get_data()
 
 @app.route("/dobryplan", methods=["GET", "POST"])
-#@requires_auth
+@requires_auth
 def serve():
     if (request.method == 'POST'):
         validator.user_init(request.get_json())
@@ -54,16 +57,18 @@ def generate_user_json(user_init):
         'result' : {}
     }
 
-    pptx_object = get_title_slides(user_init['user_info'])
+    md_presentation = get_md(user_init['user_info'])
 
-    basename = f"{ user_init['userid'] }{ uuid.uuid4().hex }.ppt"
-    fpath = f"gen/user_content/{basename}"
-    pptx_object.save(fpath)
+    #basename = f"{ user_init['userid'] }{ uuid.uuid4().hex }.pptx"
+    #fpath = f"gen/user_content/{basename}"
 
-    response['result']['type'] = 'ppt'
-    response['result']['link'] = f"/dobryplan/{basename}"
+    #response['result']['type'] = 'pptx'
+    #response['result']['link'] = f"/dobryplan/{basename}"
 
     print(str(f"OpenAI object recieved"))
+    print(md_presentation)
+    with open("test_presentation.md", "w") as f:
+         f.write(md_presentation)
 
     return response
 
@@ -78,4 +83,5 @@ def generate_user_json(user_init):
 #def server_store(deck, userid):    
 
 
-app.run(debug=True, port=8000, host='0.0.0.0')
+
+app.run(debug=True, port=5000, host='0.0.0.0')
