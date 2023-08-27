@@ -9,6 +9,7 @@ openai = "*"
 flask = "*"
 jsonschema = "*"
 python-pptx = "*"
+flask-cors = "*"
 
 [dev-packages]
 

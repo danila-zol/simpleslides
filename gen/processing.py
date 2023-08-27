@@ -1,4 +1,9 @@
 import openai
+import pandoc
+from pandoc.types import *
+import json
+import requests
+from urllib import parse
 
 
 
@@ -91,48 +96,9 @@ def formated_input():
   return user_input
 
 
-def compress_dict(dict_):
-  compressed = ''
-  for key, data in dict_.items():
-    compressed += f' {key}: {data},'
-  return compressed
-
-def get_txt_input(dict_):
-  final_str = ''
-  for key, data in dict_.items():
-    if type(data) == list:
-      temp_str = ''
-      for subdict_ in data:
-        temp_str += compress_dict(subdict_)
-      final_str += f'{key}: {temp_str}\n'
-    elif type(data) == dict:
-      final_str += f'{key}: {compress_dict(data)}\n'
-    else:
-      final_str += f'{key}: {data}\n'
-
-  print(f'user_data{final_str}')
-  return final_str
-
-#print(get_txt_input(sample_input_rus))
-#print(get_txt_input(sample_input))
-
-# requests
 
 
-
-#completion = openai.ChatCompletion.create(
-# model="gpt-3.5-turbo", 
-# messages=[{"role": "user", "content": "What is the OpenAI mission?"}]
-#)
-
-#translation = openai.ChatCompletion.create(
-#  model = "gpt-3.5-turbo", 
-#  messages=[{"role": "user", "content": f"translate to english: {get_txt_input(sample_input_rus)}"}]
-#)
-
-import json
-
-def get_json(user_info):
+def get_model_response_json(user_info):
   print('user info accepted.')
   with open("gen/key.txt") as f:
     openai.api_key = f.read()
@@ -162,92 +128,89 @@ def get_json(user_info):
 
   return response
 
-# translation
+def compress_dict(dict_):
+  compressed = ''
+  for key, data in dict_.items():
+    compressed += f' {key}: {data},'
+  return compressed
 
-#import goslate
+def get_txt_input(dict_):
+  final_str = ''
+  for key, data in dict_.items():
+    if type(data) == list:
+      temp_str = ''
+      for subdict_ in data:
+        temp_str += compress_dict(subdict_)
+      final_str += f'{key}: {temp_str}\n'
+    elif type(data) == dict:
+      final_str += f'{key}: {compress_dict(data)}\n'
+    else:
+      final_str += f'{key}: {data}\n'
 
-#gs = goslate.Goslate
-#def translate(path):
-#  with open(path) as f:
-#    response = json.dumps(f.read())
-#    response = gs.translate(response, 'en', 'rus' )
-# return response
+  print(f'user_data{final_str}')
+  return final_str
 
-#print(translate("gen/response_log.json"))
-# get slides
-
-import collections
-import collections.abc
-from pptx import Presentation
-from pptx.enum.text import PP_ALIGN
-from pptx.util import Inches, Pt
-
-a, b = ("THIS IS A TEST", "this is a test")
-
-prs = Presentation()
-slide_layout = prs.slide_layouts[6]
-
-def get_title_slides(user_info):
-  global prs, slide_layout
+def get_md(user_info):
+  md = f"% {user_info['company_name']}   \n"
   print(f'user info: {user_info}')
-  response = get_json(user_info)
-  print(f'api response: {response}')
-  for element in response["slides"]:
-    title_text = element["title"]
-    discr = get_txt_input(element["content"])
-    count = 0
-    temp = ''
-    string = ''
-    for symbol in discr:
-      if count == 0 and symbol == ' ':
-        symbol = ''   
-      if count >= 50 or symbol == ':':
-        temp += symbol
-        if (symbol in [' ', ':']):
-          string += f'{temp}\n'
-          temp = ''
-          count = 0
-        else:
-          count += 1
+  with open("gen/response_log.json") as model_response_file:
+    model_response = json.loads(model_response_file.read())
+    gslides = trslides(model_response['slides'])
+  #gslides = get_model_response_json(user_info)["slides"]
+  print(f'api response: {gslides}')
+  for slide in gslides:
+    md = md + f"# {slide['title']}   \n"
+    for header, content in slide['content'].items():
+      pretty_header = header.replace('_', ' ')
+      if (header == 'team'):
+        for team_member in content:
+          md = md + f"{team_member['name'].title()}, {team_member['expertise']}   \n"
       else:
-        temp += symbol
-        count += 1
-    string += temp
-    
-    discr = string.replace('_', ' ').replace('.,', '.')
-
-    size1 = 60
-    if len(title_text) > 20:
-      size1 = 41
-
-
-    slide = prs.slides.add_slide(slide_layout)
-    
-    left = Inches(5)
-    top = Inches(1)
-    width = Inches(0.1)
-    height = Inches(0.1)
-    txBox = slide.shapes.add_textbox(left, top, 0, 0)
-    txBox.word_wrap = True
-    title_box = txBox.text_frame
-    title_par = title_box.add_paragraph()
-    title_par.word_wrap = True
-    title_par.alignment = PP_ALIGN.LEFT
-    title_par.text = title_text
- 
-    title_par.font.bold = True
-    title_par.font.size = Pt(size1) 
-    
-    discr_par = title_box.add_paragraph()
-    discr_par.alignment = PP_ALIGN.LEFT
-    discr_par.text = discr
-    discr_par.font.size = Pt(20) 
-
+        md = md + f"{pretty_header.title()}: {content}   \n"
+    md = md + "---    \n\n"
   
+  scolon_split = md.split(':')
+  md_split = [""]
+  md_translated = ""
+  md_translated_split = []
+  for element in scolon_split:
+    md_split.append(element.split("."))
 
- 
-  return prs 
+  for element in md_split:
+    translate_text(element)
 
 
+  return md
 
+def trslides(slides):
+  translated_slides = []
+  for slide in slides:
+    translated_slide = {
+      "title" : f"{trtxt(slide['title'])}",
+      "content" : {}
+    }
+    translated_content = translated_slide["content"]
+    translated_slide
+    for header, content in slide['content'].items():
+      pretty_header = header.replace('_', ' ')
+      if (header == 'team'):
+        translated_content = slide['content']
+      else:
+        trheader = f"{trtxt(pretty_header)}"
+        trcontent = ""
+        content_split = content.split(".")
+        for element in content_split:
+          trcontent = trcontent + trtxt(element)
+        translated_content.append( { trheader : trcontent })
+      print(f"{trheader} : {trcontent}")
+    translated_slide['content'] = translated_content
+    translated_slides.append(translated_slide)
+  return translated_slides
 
+def trtxt(text):
+  
+  url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ru&dt=t&q={parse.quote(text)}"
+  response = requests.get(url)
+  data = response.json()
+  print()
+  return data[0][0][0]
