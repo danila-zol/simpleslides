@@ -4,17 +4,20 @@ from pptx import Presentation
 from processing import get_title_slides
 import json
 import uuid
+from flask_cors import CORS
+
 
 
 app = Flask('first_app')
+CORS(app)
 
 @app.route("/echo", methods=["GET", "POST"])
-#@requires_auth
+@requires_auth
 def echo():
      return request.get_data()
 
 @app.route("/dobryplan", methods=["GET", "POST"])
-#@requires_auth
+@requires_auth
 def serve():
     if (request.method == 'POST'):
         validator.user_init(request.get_json())

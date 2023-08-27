@@ -307,9 +307,5 @@ def get_title_slides(user_info):
 
   return prs 
 
-prs = get_title_slides(sample_input)
-prs.save('gen/test2.pptx')
-
-
 
 
