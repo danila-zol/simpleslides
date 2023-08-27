@@ -132,6 +132,7 @@ import json
 
 def get_json(user_info):
   print('user info accepted.')
+  
   with open("gen/key.txt") as f:
     openai.api_key = f.read()
 
@@ -150,9 +151,10 @@ def get_json(user_info):
 
   print(contents)
 
-  with open("gen/response_log.json", "+w") as f:
+  with open("gen/response_log.json", "w") as f:
     f.write(contents)
 
+  
   response = ''
   
   with open("gen/response_log.json") as f:
@@ -189,13 +191,16 @@ def translate_text(text):
     data = response.json()
     return data[0][0][0] + "."
 
-prs = Presentation()
-slide_layout = prs.slide_layouts[6]
-slide_layout2 = prs.slide_layouts[2]
+
+
 
 def get_title_slides(user_info):
   
   global prs, slide_layout
+
+  prs = Presentation()
+  slide_layout = prs.slide_layouts[6]
+  slide_layout2 = prs.slide_layouts[2]
 
   print(f'user info: {user_info}')
   response = get_json(user_info)
@@ -306,6 +311,5 @@ def get_title_slides(user_info):
 
 
   return prs 
-
 
 
